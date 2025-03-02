@@ -1,5 +1,7 @@
 # inky
 
+![Image](https://github.com/user-attachments/assets/4c9bda24-5f26-44ee-b218-cb1cb946e322)
+
 ## TOOD
 
 - 予報グラフをgoogleの表示みたいにする
@@ -16,6 +18,7 @@ https://shop.pimoroni.com/products/inky-impression-5-7?variant=32298701324371
 ## api
 
 https://openweathermap.org/current
+
 https://openweathermap.org/forecast5
 
 ## icon
@@ -24,6 +27,8 @@ https://erikflowers.github.io/weather-icons/
 
 ## 参考
 https://nobo-san.com/inky-impression-4/
+
 https://nobo-san.com/weather-calendar/
+
 https://kotamorishita.com/rpi-epaper-weather-station/
 
