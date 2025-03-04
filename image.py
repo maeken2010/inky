@@ -81,7 +81,7 @@ def weather_font(font_size):
     return ImageFont.truetype('./weathericons-regular-webfont.ttf', int(font_size * scale_size))
 
 weather_result = weather_api.get_current_weather()
-weather_forecast = weather_api.get_forecast_weather()
+weather_forecast = weather_api.get_forecast_weather(datetime.now().timestamp())
 
 def _draw_wether_info(draw):
     weather_info_y = 80

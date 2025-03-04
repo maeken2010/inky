@@ -36,7 +36,7 @@ def get_current_weather():
         'temp': data['main']['temp'],
     }
 
-def get_forecast_weather():
+def get_forecast_weather(timestamp = None):
     url = 'https://api.openweathermap.org/data/2.5/forecast'
     params = {
         'lat': '24.8054647',
@@ -45,10 +45,16 @@ def get_forecast_weather():
     }
     data = _request_api(url, params)
 
-    date_list = list(map(lambda x: x['dt_txt'], data['list']))
-    pop_list = list(map(lambda x: x['pop'], data['list']))
-    weather_code_list = list(map(lambda x: x['weather'][0]['main'], data['list']))
-    temperature_list = list(map(lambda x: x['main']['temp'], data['list']))
+    data_list = []
+    if (timestamp):
+        data_list = list(filter(lambda x: int(x['dt']) > timestamp, data['list']))
+    else:
+        data_list = data['list']
+
+    date_list = list(map(lambda x: x['dt_txt'], data_list))
+    pop_list = list(map(lambda x: x['pop'], data_list))
+    weather_code_list = list(map(lambda x: x['weather'][0]['main'], data_list))
+    temperature_list = list(map(lambda x: x['main']['temp'], data_list))
 
     return {
         'date_list': date_list,
