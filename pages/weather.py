@@ -147,6 +147,10 @@ def _draw_pop_line(draw, weather_forecast):
     temp_points = [(scale_x(i), scale_y_temp(temperatures[i])) for i in range(LEN)]
     draw.line(temp_points, fill=RED, width=2)
 
+    temp_font = medium_font(7)
+    draw.text((graph_draw_left + 2, graph_draw_top), f"{max_temp:.1f}°", fill=RED, font=temp_font)
+    draw.text((graph_draw_left + 2, graph_draw_bottom - 16), f"{min_temp:.1f}°", fill=RED, font=temp_font)
+
     for i, hour in enumerate(hours):
         dt = datetime.fromisoformat(hour)
         if(dt.hour != 0):
