@@ -74,12 +74,12 @@ def _handle_buttons():
                     print(f"Button {label} pressed")
 
                     with _lock:
-                        if idx == 0:    # A: 前のページ
-                            _show_page(_current_page - 1)
-                        elif idx == 1:  # B: 次のページ
-                            _show_page(_current_page + 1)
-                        elif idx == 2:  # C: 現在のページを更新
-                            _show_page(_current_page)
+                        if idx == 0:    # A: 天気ページ（同じページなら更新）
+                            _show_page(0)
+                        elif idx == 1:  # B: 日付ページ（同じページなら更新）
+                            _show_page(1)
+                        elif idx == 2:  # C: カレンダーページ（同じページなら更新）
+                            _show_page(2)
                         # D (idx==3): 予約
                     _last_button_time = time.time()  # リフレッシュ完了後にタイムスタンプを更新
     except Exception as e:
