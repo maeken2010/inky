@@ -30,5 +30,5 @@ def create_image():
 
     photo_path = os.path.join(PHOTOS_DIR, random.choice(photos))
     img = Image.open(photo_path).convert('RGB')
-    img = ImageOps.fit(img, RESOLUTION)
+    img = ImageOps.pad(img, RESOLUTION, color=(0, 0, 0))
     return img
