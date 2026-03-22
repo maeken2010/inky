@@ -68,7 +68,6 @@ def _handle_buttons():
                     now = time.time()
                     if now - _last_button_time < DEBOUNCE_SEC:
                         continue
-                    _last_button_time = now
 
                     idx = BUTTONS.index(event.line_offset)
                     label = LABELS[idx]
@@ -82,6 +81,7 @@ def _handle_buttons():
                         elif idx == 2:  # C: 現在のページを更新
                             _show_page(_current_page)
                         # D (idx==3): 予約
+                    _last_button_time = time.time()  # リフレッシュ完了後にタイムスタンプを更新
     except Exception as e:
         print(f"Button handling error: {e}")
 
