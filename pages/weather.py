@@ -91,8 +91,19 @@ def _draw_wether_info(draw, weather_result):
     temp_info_y = 80
     weather_temp = weather_result['temp']
     (_, temperature_text_h) = put_text_left(draw, 0, temp_info_y, medium_font(12), "Temperature", BLACK)
-    (temp_text_w, _) = put_text_left(draw, 0, temp_info_y + temperature_text_h, bold_font(42), str(weather_temp), BLACK)
+    (temp_text_w, temp_h) = put_text_left(draw, 0, temp_info_y + temperature_text_h, bold_font(42), str(weather_temp), BLACK)
     put_text_left(draw, temp_text_w + 4, temp_info_y + temperature_text_h, weather_font(30), "\uf03c", BLACK)
+
+    sub_y = temp_info_y + temperature_text_h + temp_h + 12
+    feels_like = weather_result['feels_like']
+    pressure = weather_result['pressure']
+
+    (_, fl_label_h) = put_text_left(draw, 0, sub_y, medium_font(10), "Feels like", BLACK)
+    (fl_val_w, _) = put_text_left(draw, 0, sub_y + fl_label_h, bold_font(22), f"{feels_like:.1f}°", BLACK)
+
+    pressure_x = fl_val_w + 16
+    put_text_left(draw, pressure_x, sub_y, medium_font(10), "Pressure", BLACK)
+    put_text_left(draw, pressure_x, sub_y + fl_label_h, bold_font(22), f"{pressure}hPa", BLACK)
 
 def _draw_pop_line(draw, weather_forecast):
     LEN = 16
