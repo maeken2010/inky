@@ -36,6 +36,8 @@ def get_current_weather():
         'temp': data['main']['temp'],
         'feels_like': data['main']['feels_like'],
         'pressure': data['main']['pressure'],
+        'sunrise': data['sys']['sunrise'],
+        'sunset': data['sys']['sunset'],
     }
 
 def get_forecast_weather(timestamp = None):
