@@ -29,6 +29,13 @@ RED = 4
 YELLOW = 5
 ORANGE = 6
 
+weather_color_map = {
+    "Clear": YELLOW,
+    "Rain": BLUE,
+    "Drizzle": BLUE,
+    "Thunderstorm": BLUE,
+}
+
 weather_icon_map = {
     "Clear": "\uf00d",          # ☀ 晴れ
     "Clouds": "\uf013",         # ☁ 曇り
@@ -85,8 +92,9 @@ def _draw_wether_info(draw, weather_result):
     weather_info_y = 80
     weather_code = weather_result['weatherCode']
     weather_description = weather_result['weatherDescription']
+    icon_color = weather_color_map.get(weather_code, BLACK)
     (_, weather_name_h) = put_text_rigth(draw, 0, weather_info_y, medium_font(12), weather_description, BLACK)
-    put_text_rigth(draw, 20, weather_info_y + weather_name_h, weather_font(58), weather_icon_map[weather_code], BLACK)
+    put_text_rigth(draw, 20, weather_info_y + weather_name_h, weather_font(72), weather_icon_map[weather_code], icon_color)
 
     temp_info_y = 80
     weather_temp = weather_result['temp']
