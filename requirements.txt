@@ -1,0 +1,5 @@
+pillow
+requests
+font-hanken-grotesk
+schedule
+inky[rpi]
