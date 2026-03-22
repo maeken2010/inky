@@ -128,11 +128,21 @@ def _draw_pop_line(draw, weather_forecast):
     def scale_y_temp(value):
         return graph_draw_bottom - ((value - min_temp) / (max_temp - min_temp)) * graph_draw_height
 
-    def scale_x(index):
-        return graph_draw_left + index * (graph_draw_width) / (LEN - 1)
+    bar_width = graph_draw_width / LEN
+    bar_gap = 2
 
-    precip_points = [(scale_x(i), scale_y_precip(precipitation_probs[i])) for i in range(LEN)]
-    draw.line(precip_points, fill=BLUE, width=2)
+    def bar_x(index):
+        return graph_draw_left + index * bar_width
+
+    for i, pop in enumerate(precipitation_probs):
+        x0 = bar_x(i) + bar_gap
+        x1 = bar_x(i) + bar_width - bar_gap
+        y0 = scale_y_precip(pop)
+        y1 = graph_draw_bottom
+        draw.rectangle([(x0, y0), (x1, y1)], fill=BLUE)
+
+    def scale_x(index):
+        return bar_x(index) + bar_width / 2
 
     temp_points = [(scale_x(i), scale_y_temp(temperatures[i])) for i in range(LEN)]
     draw.line(temp_points, fill=RED, width=2)
