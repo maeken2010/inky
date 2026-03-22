@@ -34,6 +34,11 @@ weather_color_map = {
     "Rain": BLUE,
     "Drizzle": BLUE,
     "Thunderstorm": BLUE,
+    "Snow": BLUE,
+    "Sleet": BLUE,
+    "Tornado": BLUE,
+    "Squall": BLUE,
+    "Hurricane": BLUE,
 }
 
 weather_icon_map = {
@@ -89,7 +94,7 @@ def weather_font(font_size):
     return ImageFont.truetype(font_path, int(font_size * scale_size))
 
 def _draw_wether_info(draw, weather_result):
-    weather_info_y = 80
+    weather_info_y = 55
     weather_code = weather_result['weatherCode']
     weather_description = weather_result['weatherDescription']
     icon_color = weather_color_map.get(weather_code, BLACK)
