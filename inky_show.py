@@ -28,9 +28,14 @@ def _get_inky():
 def _show_page(index):
     global _current_page
     _current_page = index % len(pages.PAGES)
-    img = pages.PAGES[_current_page].create_image()
+    page = pages.PAGES[_current_page]
+    img = page.create_image()
     inky = _get_inky()
-    inky.set_image(img)
+    saturation = getattr(page, 'SATURATION', None)
+    if saturation is not None:
+        inky.set_image(img, saturation=saturation)
+    else:
+        inky.set_image(img)
     inky.show()
 
 
@@ -80,7 +85,8 @@ def _handle_buttons():
                             _show_page(1)
                         elif idx == 2:  # C: カレンダーページ（同じページなら更新）
                             _show_page(2)
-                        # D (idx==3): 予約
+                        elif idx == 3:  # D: 写真ページ（同じページなら次の写真）
+                            _show_page(3)
                     _last_button_time = time.time()  # リフレッシュ完了後にタイムスタンプを更新
     except Exception as e:
         print(f"Button handling error: {e}")
