@@ -175,9 +175,10 @@ def _draw_pop_line(draw, weather_forecast):
     draw.text((graph_draw_left + 2, graph_draw_top), f"{max_temp:.1f}°", fill=RED, font=temp_font)
     draw.text((graph_draw_left + 2, graph_draw_bottom - 16), f"{min_temp:.1f}°", fill=RED, font=temp_font)
 
+    utc_offset = datetime.now().astimezone().utcoffset()
     for i, hour in enumerate(hours):
-        dt = datetime.fromisoformat(hour)
-        if(dt.hour != 0):
+        dt = datetime.fromisoformat(hour) + utc_offset
+        if dt.hour != 0:
             continue
         t = dt.strftime('%m/%d')
         x = scale_x(i)
