@@ -148,7 +148,7 @@ def _draw_pop_line(draw, weather_forecast):
     def scale_y_precip(value):
         return graph_draw_bottom - value * graph_draw_height
 
-    min_temp, max_temp = min(temperatures), max(temperatures)
+    min_temp, max_temp = min(temperatures) - 1, max(temperatures) + 1
     def scale_y_temp(value):
         return graph_draw_bottom - ((value - min_temp) / (max_temp - min_temp)) * graph_draw_height
 
