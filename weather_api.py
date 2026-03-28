@@ -3,6 +3,9 @@
 import os
 import requests
 
+LATITUDE = '26.274996577722877'
+LONGITUDE = '127.7437262268294'
+
 def _request_api(url, params = {}):
     api_key = os.environ.get("OPENWEATHER_API_KEY")
     if not api_key:
@@ -23,8 +26,8 @@ def _request_api(url, params = {}):
 def get_current_weather():
     url = 'https://api.openweathermap.org/data/2.5/weather'
     params = {
-        'lat': '24.8054647',
-        'lon': '125.2811296',
+        'lat': LATITUDE,
+        'lon': LONGITUDE,
         'units': 'metric',
     }
     data = _request_api(url, params)
@@ -43,8 +46,8 @@ def get_current_weather():
 def get_forecast_weather(timestamp = None):
     url = 'https://api.openweathermap.org/data/2.5/forecast'
     params = {
-        'lat': '24.8054647',
-        'lon': '125.2811296',
+        'lat': LATITUDE,
+        'lon': LONGITUDE,
         'units': 'metric',
     }
     data = _request_api(url, params)
